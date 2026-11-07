@@ -1,0 +1,21 @@
+stages:
+  - test
+  - demonstrate
+
+default:
+  image: python:3.12-alpine
+
+test:
+  stage: test
+  script:
+    - python -m unittest discover -s tests -v
+
+push_demo:
+  stage: demonstrate
+  script:
+    - python scripts/push_demo.py
+
+pull_demo:
+  stage: demonstrate
+  script:
+    - python scripts/pull_demo.py
